@@ -30,14 +30,20 @@ section{
     padding: 0.5em 0.5em;
     border-bottom-right-radius: 0em;
     border-top-right-radius: 0em;
+    outline: none;
+    border: none;
 }
 div.homesearch #searchbutton{
+    color: var(--defaultText);
+    background-color: var(--button_two);
     padding: 0.5em 0.5em;
     align-self: center;
     font-size: 2em;
     border-radius: 0.5em;
     border-bottom-left-radius: 0em;
     border-top-left-radius: 0em;
+    outline: none;
+    border: none;
 }
 div.date{
     margin-top: 0.7em;
