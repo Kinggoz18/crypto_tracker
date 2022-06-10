@@ -1,0 +1,67 @@
+:root{
+    --defaultBackground: #131516;
+    --defaultText: #EEF2FB;
+    --searchForm: #030B11;
+    --button_one: #A31621;
+    --button_two:#3ABEFF;
+    --button_add: #47C2FF;
+    --button_remove: #F22B29;
+    --coinDisplay: #140F2D;
+    --topcoinContainer: #210029;
+    --topcoinBorder: #FEEA00;
+    --newsBackground: #EEEEE7;
+    --newsText: #151514;
+}
+/*BODY STYLING*/
+body{
+    max-width: 98%;
+    display: flex;
+    flex-flow: column nowrap; /* This element is now a column and does not wrap */
+    background-color: var(--defaultBackground);
+    color: var(--defaultText);
+    min-width: 100vw; /* Make the body 100% of the height of the view port */
+    min-height: 100vh; /* Make the body 100% of the width of the view port */
+}
+main{
+    max-width: 100% !important;
+    max-height: 100% !important;
+    padding: 1em 1em !important;
+    background-color: var(--defaultBackground);
+}
+/*Heading STYLING*/
+header i, header a{
+    color: var(--defaultText) !important;
+}
+header{
+    background-color: var(--searchForm);
+}
+/*CLASSES FOR PRICE CHANGE*/
+.up{
+    color: green;
+}
+.down{
+    color: red;
+}
+button:hover{
+    cursor: pointer;
+}
+/*Footer styling*/
+footer{
+    padding-left: 1em;
+    border-top: solid black 1px;
+    display: grid !important;
+    grid-template-columns: 70% 5% 5% 20%;
+    align-items: baseline;
+    margin-top:auto; 
+    width:100%;
+}
+footer div, footer a{
+    margin: 1em 0.5em;
+}
+footer a{
+    font-size: 1.5em;
+}
+footer i{
+    color: var(--defaultText) !important;
+}
+

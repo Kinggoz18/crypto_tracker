@@ -1,0 +1,58 @@
+@import 'reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+header{
+    display: grid;
+    grid-template-columns: auto auto;
+    border-bottom: 1px black solid;
+    padding: 0em 1.5em;
+    color: var(--defaultText);
+}
+header h1{
+    font-size: 3.4em;
+    font-family: 'Teko', sans-serif;
+    padding: 0.3em 0em;
+}
+nav ul{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: right;
+}
+nav ul li a{
+    text-decoration: none;
+    font-size: 1.5em;
+}
+nav ul li{
+    padding: 2em;
+    display: block;
+}
+/*SEARCH BOX STYLING*/
+.search{
+    display: flex;
+    flex-direction: row;
+}
+.search > #searchbox{
+    width: 40em;
+    padding: 0.5em 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 1em;
+    border-bottom-right-radius: 0em;
+    border-top-right-radius: 0em;
+}
+form div #searchbutton{
+    align-self: start;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border-radius: 0.5em;
+    border-bottom-left-radius: 0em;
+    border-top-left-radius: 0em;
+}
+.nav-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    outline: none;
+}
+.nav-div i{
+    margin-bottom: 0.7em;
+}

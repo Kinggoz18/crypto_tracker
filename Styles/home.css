@@ -1,0 +1,123 @@
+@import "master.css";
+header{
+    background-color: var(--defaultBackground) !important;
+}
+main{
+    background-color: var(--searchForm) !important;
+}
+h2{
+    font-size: 2.5em;
+}
+section{
+    border-top: black 1px solid;
+    margin: 0.5em 0em;
+    padding: 1em 0em;
+}
+
+.h2-track{
+    font-family: 'Teko', sans-serif;
+    margin: 0.5em 0em;
+}
+.homesearch{
+    display: flex;
+    flex-direction: row;
+}
+.homesearch > #searchbox{
+    margin: 0.4em 0em;
+    font-size: 2em;
+    width: 20em;
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    border-bottom-right-radius: 0em;
+    border-top-right-radius: 0em;
+}
+div.homesearch #searchbutton{
+    padding: 0.5em 0.5em;
+    align-self: center;
+    font-size: 2em;
+    border-radius: 0.5em;
+    border-bottom-left-radius: 0em;
+    border-top-left-radius: 0em;
+}
+div.date{
+    margin-top: 0.7em;
+    padding-top: 0.5em;
+    border-top: solid black 1px;
+    font-weight: lighter;
+    font-family: 'Teko', sans-serif;
+
+}
+.hidden{
+    display: none !important;
+}
+.result{
+    margin: 0.5em 0em;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 0.5em 1em;
+    display: grid;
+    grid-template-columns: 50% 20% 10%;
+    background-color: var(--coinDisplay);
+    align-items: center;
+}
+.searchResult{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: var(--defaultText);
+}
+button#addToPortFolio{
+    border: none;
+    border-radius: 0.5em;
+    background-color: var(--button_add);
+    color: var(--defaultText);
+    padding: 0.5em 0.5em;
+}
+/*Top performing coins containers*/
+.topcoin_container{
+    border-top: solid var(--topcoinBorder) 2px;
+    border-bottom: solid var(--topcoinBorder) 2px;
+    padding: 1.5em 0em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+}
+.fade{
+    opacity: 0;
+    transition: 1s;
+}
+[class*="topcoin_box-"]{
+    margin-right: 1em;
+    width: 8em;
+    height: 3em;
+    font-size: 1.5em;
+    padding: 1.3em 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--topcoinContainer);
+    border-left: solid var(--topcoinBorder) 1px;
+    border-right: solid var(--topcoinBorder) 1px;
+
+}
+.coin_name{
+    margin-bottom: 0.5em;
+}
+/*Current news containers*/
+.currnews_container{
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: 17% 17% 17% 17% 17%;
+}
+.currnews_box{
+    margin-right: 1em;
+    width: 10em;
+    height: 5em;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid black 1px;
+}

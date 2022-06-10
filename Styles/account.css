@@ -1,0 +1,34 @@
+@import 'master.css';
+
+ul.crypto_list li{
+    display: grid;
+    grid-template-columns: 20% 25% 10% 30%;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    font-size: 1.3em;
+    padding: 0.5em  0.5em;
+    margin: 0.5em 0em;
+    color: var(--searchForm);
+    background-color: var(--newsBackground);
+    max-width: 90%;
+}
+h1.account_h{
+    padding: 0.5em 0em;
+    font-size: 1.7em;
+    border-top: solid black 1px;
+}
+h2{
+    font-size: 1.7em;
+    padding: 0.5em 0em;
+}
+div#remove{
+    display: flex;
+    justify-content: end;
+}
+.crypto_list li .remove_coin{
+    background-color: var(--button_remove);
+    color: var(--defaultText);
+    padding: 0.4em 1em;
+    border: none;
+    border-radius: 0.5em;
+}
