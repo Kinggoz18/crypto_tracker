@@ -4,9 +4,9 @@
     //function to connect to the database
     function connectDB()
     {
-        $serverName = "LAPTOP-F4NIPHRU";
-        $connectionOptions = array("Database"=>"master",
-            "Uid"=>"chigoziemuonagolu", "PWD"=>"raphael2002");
+        $serverName = "chigoziemuonagolu-projects.database.windows.net";
+        $connectionOptions = array("Database"=>"cryptotracker",
+            "Uid"=>"chigoziemuonagolu", "PWD"=>"%Raphael2002%");
         $conn = sqlsrv_connect($serverName, $connectionOptions);
         if($conn == false)
             {
