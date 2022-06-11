@@ -20,8 +20,8 @@
     <!--FONT AWESOME LINK-->
     <script src="https://kit.fontawesome.com/e4c6fd0b9b.js" crossorigin="anonymous"></script>
     <!--STYLESHEET LINKS-->
-    <link rel="stylesheet" href="Styles/home.css"/>
     <link rel="stylesheet" href="Styles/navbar.css"/>
+    <link rel="stylesheet" href="Styles/home.css"/>
 
     <title>Cryptocurrency Tracker</title>
 </head>
@@ -36,8 +36,8 @@
                 <button id="searchbutton" name="submit" type="button">FIND</button>
             </div>
         </form>
-        <h3>Note: Only Coins and tokens listed on the crypto.com exchnage can be tracked.</br> 
-            IMPORTANT: Please add the “Allow Cors” extension from your browsers web store to prevent any Cross-Origin errors and allow for the site the work properly.</h3>
+        <h3>Note: Only Coins and tokens listed on the crypto.com exchnage can be tracked.</br></h3>
+        <h3>IMPORTANT: Please add the “Allow Cors” extension from your browsers web store to prevent any Cross-Origin errors and allow for the site the work properly.</h3>
         <div class="result hidden">
         </div>
         <div class="date"></div>

@@ -1,4 +1,3 @@
-@import 'master.css';
 main{
     display: flex;
     align-items: center;
@@ -66,4 +65,37 @@ section.login-section input, section.signup-section input{
 #createAcc, .swicth-signup{
     background-color: var(--button_two);
     color: white;
+}
+/*TABLET DEVICES AND MOST MOBILE DEVICES*/
+@media only screen and (max-width: 810px)
+{
+    .login-box{
+        display: grid;
+        grid-template-rows: auto;
+        width: 100%;
+    }
+    .login-icon{
+        justify-self: center;
+    }
+    .btn-options{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login-password, .login-name{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0em;
+        justify-self: center;
+    }
+}
+/* SAMSUNG FOLD*/
+@media only screen and (max-width: 290px){
+    .login-password, .login-name{
+        width: inherit;
+    }
+    .btn-options{
+        width: inherit;
+    }
 }

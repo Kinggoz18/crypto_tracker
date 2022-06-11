@@ -56,8 +56,8 @@
     <!--FONT AWESOME LINK-->
     <script src="https://kit.fontawesome.com/e4c6fd0b9b.js" crossorigin="anonymous"></script>
     <!--STYLESHEET LINKS-->
-    <link rel="stylesheet" href="Styles/login.css">
     <link rel="stylesheet" href="Styles/navbar.css">
+    <link rel="stylesheet" href="Styles/login.css">
     <title>Cryptocurrency Tracker - Login</title>
 </head>
 <body>

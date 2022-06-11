@@ -1,16 +1,19 @@
-@import 'master.css';
-
 ul.crypto_list li{
     display: grid;
-    grid-template-columns: 20% 25% 10% 30%;
+    grid-template-columns: 25% 25% 25% 25%;
     border-top: solid black 1px;
     border-bottom: solid black 1px;
     font-size: 1.3em;
-    padding: 0.5em  0.5em;
     margin: 0.5em 0em;
     color: var(--searchForm);
     background-color: var(--newsBackground);
     max-width: 90%;
+}
+li div, li button{
+    display: flex;
+    justify-self: flex-start;
+    padding: 0.5em;
+    white-space: nowrap;
 }
 h1.account_h{
     padding: 0.5em 0em;
@@ -31,4 +34,24 @@ div#remove{
     padding: 0.4em 1em;
     border: none;
     border-radius: 0.5em;
+}
+/*TABLET SCREENS*/
+@media screen and (max-width: 1030px)
+{
+    ul.crypto_list li{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+
+/*MOBILE SCREENS*/
+@media screen and (max-width: 600px)
+{
+    ul.crypto_list li{
+        display: grid;
+        grid-template-columns: 100%;
+    }
+    li div, li button{
+        white-space: inherit;
+    }
 }

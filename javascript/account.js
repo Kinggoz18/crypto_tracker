@@ -1,3 +1,4 @@
+import {calculateChange} from './master.js'
 //Function to load 24hr changes for users coins
 function load24HrChange(coinName, calculateChange)
 {

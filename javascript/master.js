@@ -25,11 +25,13 @@ function loadHeader()
     {
         const nav_home = document.querySelector("#nav-home");
         nav_home.remove();
+        $('#mobile_nav-home').remove();
     }
     else if(title.innerText=="Cryptocurrency Tracker - News")    //If in the Markets page
     {
         const nav_markets=document.querySelector("#nav-news");
         nav_markets.remove();
+        $('#mobile_nav-news').remove();
     }
     else if(title.innerText=="Cryptocurrency Tracker - Login")  
     {
@@ -40,10 +42,12 @@ function loadHeader()
         nav_home.remove();
         nav_markets.remove();
         $('#nav-account').hide();
+        $('#mobile_nav').remove();
     }
     else if(title.innerText=="Cryptocurrency Tracker - Account")
     {
         $('#nav-account').hide();
+        $('#mobile_nav-account').remove();
     }
 }
 //
@@ -119,7 +123,7 @@ async function getAllCoins(endpoint)
             }
         })
 }
-function calculateChange(open, current){
+export function calculateChange(open, current){
     let percent= (((current-open)/open)*100).toFixed(2);
     let tempPercent = percent.toString();
     let final = tempPercent+' %';
@@ -143,12 +147,12 @@ async function getCandleStick(url, calculateChange, coinData)
                 let priceChage = calculateChange(lastElement.o, lastElement.c);
                 if(priceChage>=0)
                 {
-                    let insert =`<div class="searchResult"><div>Symbol: ${coinData['symbol']}</div><div>Name: ${coinData['name']}</div></div><div class="up">24h: ${priceChage}</div><button id="addToPortFolio" type="button">Add To Portfolio</button>`;
+                    let insert =`<div class="searchResult"><div>Symbol: ${coinData['symbol']}</div><div>Name: ${coinData['name']}</div></div><div class="up">24h: ${priceChage}</div><button id="addToPortFolio" type="button">Add</button>`;
                     $('div.result').html(insert);
                     $('div.result').removeClass("hidden");
                 }
                 else{
-                    let insert =`<div class="searchResult"><div>Symbol: ${coinData['symbol']}</div><div>Name: ${coinData['name']}</div></div><div class="down">24h: ${priceChage}</div><button id="addToPortFolio" type="button" value="submit">Add To Portfolio</button>`;
+                    let insert =`<div class="searchResult"><div>Symbol: ${coinData['symbol']}</div><div>Name: ${coinData['name']}</div></div><div class="down">24h: ${priceChage}</div><button id="addToPortFolio" type="button" value="submit">Add</button>`;
                     $('div.result').html(insert);
                     $('div.result').removeClass("hidden");
                 }
@@ -249,5 +253,11 @@ $(document).ready(function(){
     $("body").on("click", "#addToPortFolio",function(){
         console.log("Adding: "+coinQuery);
         AddToUserList(coinQuery);
+    });
+    //Mobile Navbar event listener
+    let flag = false;
+    $('#mobile_icon').on('click', function(){
+
+        $('.mobile_list').slideToggle();
     });
 });//End of Domloaded event listener

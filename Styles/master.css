@@ -21,6 +21,7 @@ body{
     color: var(--defaultText);
     min-width: 100vw; /* Make the body 100% of the height of the view port */
     min-height: 100vh; /* Make the body 100% of the width of the view port */
+    overflow-x: hidden;
 }
 main{
     max-width: 100% !important;
@@ -36,6 +37,9 @@ header{
     background-color: var(--searchForm);
 }
 /*CLASSES FOR PRICE CHANGE*/
+.hidden{
+    display: none !important;
+}
 .up{
     color: green;
 }
@@ -47,13 +51,13 @@ button:hover{
 }
 /*Footer styling*/
 footer{
-    padding-left: 1em;
+    padding: 0.5em 1em;
     border-top: solid black 1px;
     display: grid !important;
     grid-template-columns: 70% 5% 5% 20%;
     align-items: baseline;
     margin-top:auto; 
-    width:100%;
+    width:100vw;
 }
 footer div, footer a{
     margin: 1em 0.5em;
@@ -64,4 +68,21 @@ footer a{
 footer i{
     color: var(--defaultText) !important;
 }
-
+/*RESPONSIVE STYLING*/
+@media screen and (max-width: 760px){
+    footer{
+        grid-template-columns: auto auto auto auto;
+    }
+}
+@media screen and (max-width: 420px){
+    footer{
+        display: grid;
+        justify-content: left;
+        grid-template-columns: auto;
+        margin-top: 0em;
+        font-size: 0.7em;
+    }
+    footer div, footer a{
+        margin: 0.5em 0.5em;
+    }
+}

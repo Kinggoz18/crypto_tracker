@@ -1,4 +1,5 @@
 @import 'reset.css';
+@import 'master.css';
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
 header{
     display: grid;
@@ -55,4 +56,40 @@ form div #searchbutton{
 }
 .nav-div i{
     margin-bottom: 0.7em;
+}
+/*Mobile Nav*/
+#mobile_nav, .mobile_list{
+    display: none;
+}
+@media screen and (max-width: 680px)
+{
+    #dynamic_navbar{
+        display: none;
+    }
+    #mobile_nav{
+        display: flex;
+        align-items: center;
+        justify-self: flex-end;
+        margin-left: 2em;
+    }
+    #mobile_icon{
+        flex-grow: 1;
+        font-size: 2em;
+    }
+    .mobile_list{
+        display: none;
+    }
+    .mobile_list ul{
+        display: flex;
+        flex-flow: column nowrap;
+    }
+    .mobile_list ul li{
+        padding: 1em 0.5em;
+        border-bottom: solid 1px;
+        border-bottom: solid white 2px;
+        background-color: var(--button_add);
+    }
+    .mobile_list ul li a{
+        color: var(--defaultText);
+    }
 }
