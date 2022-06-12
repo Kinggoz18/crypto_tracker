@@ -4,11 +4,18 @@ let news_Data =[];
 let news =[];
 function getNews()
 {
-    $.ajax({
-        url: "https://cryptopanic.com/api/v1/posts/?auth_token=b44a7f73a7500ba81032dfa75b6bb7a1f7d1b7ec",
-        type: "GET",
-        success: function(result){
-            let temp =  result['results'];
+    let url= "https://cryptopanic.com/api/v1/posts/?auth_token=b44a7f73a7500ba81032dfa75b6bb7a1f7d1b7ec";
+    fetch("./getNews.php?url="+url,{method: 'GET'}).then(
+        (resp)=>{
+            if(!resp.ok){
+                console.log(resp.statusText);
+            }
+            else{
+                return resp.json();
+            }
+        }
+    ).then((resp)=>{
+        let temp =  resp['results'];
             temp.forEach(Element=>{
                 let temp_source = Element['source'];
                 let source = temp_source['domain'];
@@ -19,10 +26,10 @@ function getNews()
                 };
                 news_Data.push(current);
             });
-        },
-        complete: function(){
             loadNews();
-        }   
+    })
+    .catch(error=>{
+        console.error(error);
     });
 }
 function loadNews(){
