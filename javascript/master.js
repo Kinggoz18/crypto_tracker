@@ -1,5 +1,4 @@
 'use strict';
-
 let coinQuery="";
 const title = document.querySelector("title");
 let getListings = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/map";
@@ -113,7 +112,7 @@ async function getAllCoins(endpoint)
                     else{
                         coinQuery = result['symbol'];
                         coinQuery = coinQuery.toUpperCase();
-                        let oneDay_candleStick =`https://api.crypto.com/v2/public/get-candlestick?format=json&jsoncallback=?&instrument_name=${coinQuery}_USDT&timeframe=1D`;
+                        let oneDay_candleStick =`https://api.crypto.com/v2/public/get-candlestick?instrument_name=${coinQuery}_USDT`;
                         getCandleStick(oneDay_candleStick, calculateChange, result);
                     }
                 });
@@ -133,12 +132,17 @@ export function calculateChange(open, current){
 async function getCandleStick(url, calculateChange, coinData)
 {
     console.log(url);
-    $.ajax(
-        {
-            url: url,             
-            type: "GET",
-            success: function(result){
-                let results = result['result'];
+    fetch("./getCryptoData.php?url="+url+"&time=timeframe=1D",{method: 'GET'}).then(
+        (resp)=>{
+            if(!resp.ok){
+                console.log(resp.statusText);
+            }
+            else{
+                return resp.json();
+            }
+        }
+    ).then((resp)=>{
+        let results = resp['result'];
                 let data = results['data'];
                 let last = results['data'].length -1;
                 
@@ -156,12 +160,9 @@ async function getCandleStick(url, calculateChange, coinData)
                     $('div.result').html(insert);
                     $('div.result').removeClass("hidden");
                 }
-            },
-            error: function(xhr, status){
-                console.log("Error: "+ xhr.status);
-            }
-        }
-    )
+    }).catch(error=>{
+            console.error(error);
+        });
 }
 //Function to add a coin to the users list
 function AddToUserList(symbol)
@@ -179,37 +180,43 @@ function AddToUserList(symbol)
 //Function to load all coins from crypto.com api
 function GetAllCryptos()
 {
-    $.ajax({
-        url: getCryptos,
-        success: function(result)
+    fetch(`${getCryptos}`).then((resp)=>{
+        if(!resp.ok)
         {
-            let results = result['result'];
-            let data = results['instruments'];
-            let i=0;
-            data.forEach(element=>{
-                let current = element['base_currency'];
-                coinList_2.push(current);
-            });
-            coinList_2 = [...new Set(coinList_2)];
-        },
-        complete: function(results){
-            GetAllCryptoData();
-        },
-        error: function(xhr, status){
-            console.log("Error: "+xhr.status);
+            console.error(resp.status);
         }
-    })
+        else{return resp.json();}
+    }).then(resp=>{
+        let results = resp['result'];
+        let data = results['instruments'];
+        let i=0;
+        data.forEach(element=>{
+            let current = element['base_currency'];
+            coinList_2.push(current);
+        });
+        coinList_2 = [...new Set(coinList_2)];
+        GetAllCryptoData();
+    }).catch((error) => {
+        console.error('Error:', error);
+      });
 }
 //Function to get data on all crypto.com cryptos in the coinList_2 array
 function GetAllCryptoData()
 {
     if(currentIndex < coinList_2.length)
     {
-        $.ajax({
-            url : `https://api.crypto.com/v2/public/get-candlestick?format=json&jsoncallback=?&instrument_name=${coinList_2[currentIndex]}_USDT&timeframe=1D`,
-            type: "GET",
-            success: function(result){
-                let results = result['result'];
+        let url =  `https://api.crypto.com/v2/public/get-candlestick?instrument_name=${coinList_2[currentIndex]}_USDT`;
+        fetch("./getCryptoData.php?url="+url+"&time=timeframe=1D",{method: 'GET'}).then(
+            (resp)=>{
+                if(!resp.ok){
+                    console.log(resp.statusText);
+                }
+                else{
+                    return resp.json();
+                }
+            }
+        ).then((resp)=>{
+            let results = resp['result'];
                 if(results!="")
                 {
                     let data = results['data'];
@@ -233,7 +240,8 @@ function GetAllCryptoData()
                     loadTopCoinArray();
                 }
                 GetAllCryptoData();
-            }, 
+        }).catch((error)=>{
+            console.error('Error:', error);
         });
     }
 }

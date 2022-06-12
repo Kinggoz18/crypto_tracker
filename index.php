@@ -5,6 +5,7 @@
     {
         header('Location: ./login.php');
     }
+    header('Access-Control-Allow-Origin: *');
 ?>
 
 <!DOCTYPE html>

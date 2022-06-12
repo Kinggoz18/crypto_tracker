@@ -3,14 +3,19 @@ import {calculateChange} from './master.js'
 function load24HrChange(coinName, calculateChange)
 {
     console.log(coinName[0].textContent);
-    let fecthUrl = `https://api.crypto.com/v2/public/get-candlestick?format=json&jsoncallback=?&instrument_name=${coinName[0].textContent}_USDT&timeframe=1D`;
+    let fecthUrl = `https://api.crypto.com/v2/public/get-candlestick?instrument_name=${coinName[0].textContent}_USDT`;
     console.log(fecthUrl);
-    $.ajax(
-        {
-            url: fecthUrl,
-            type: 'GET',
-            success: function(result){
-                let results = result['result'];
+    fetch("./getCryptoData.php?url="+fecthUrl+"&time=timeframe=1D",{method: 'GET'}).then(
+        (resp)=>{
+            if(!resp.ok){
+                console.log(resp.statusText);
+            }
+            else{
+                return resp.json();
+            }
+        }
+    ).then((resp)=>{
+        let results = resp['result'];
                 let data = results['data'];
                 let last = results['data'].length -1;
                 
@@ -28,9 +33,10 @@ function load24HrChange(coinName, calculateChange)
                     $(coinName[2]).text("24h: "+priceChange+"%");
                     $(coinName[1]).html("Current Price: &#36; "+(lastElement.c).toFixed(2).toLocaleString("en-US"));
                 }
-            },
-        }
-    );
+    })
+    .catch(error=>{
+        console.error(error);
+    });
 }
 //Function to remove coin from user list
 function removeCoin(coinToRemove)

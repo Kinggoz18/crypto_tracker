@@ -5,6 +5,7 @@
     {
         header('Location: ./login.php');
     }
+    header('Access-Control-Allow-Origin: *');
 ?>
 <!--DISPLAY TOP 50 PERFORMING COINS HERE-->
 <!DOCTYPE html>

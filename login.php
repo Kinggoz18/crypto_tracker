@@ -31,7 +31,7 @@
         {
             if(signupDB($conn, $signup_username, $signup_password))
             {
-                $_SESSION['username']=$signup_password;
+                $_SESSION['username']=$signup_username;
                 header('Location: ./index.php');
             }
             else{
