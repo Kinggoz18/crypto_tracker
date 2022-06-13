@@ -100,23 +100,6 @@ async function getAllCoins(endpoint)
                     coinList.push(current);
                 });
             },
-            complete: function()
-            {
-                $('#searchbutton').click(function(){
-                    let searchword = document.querySelector('#searchbox').value;
-                    const result = SearchCoinList(searchword);
-                    if(result===undefined)
-                    {
-                        console.log("No results found");
-                    }
-                    else{
-                        coinQuery = result['symbol'];
-                        coinQuery = coinQuery.toUpperCase();
-                        let oneDay_candleStick =`https://api.crypto.com/v2/public/get-candlestick?instrument_name=${coinQuery}_USDT`;
-                        getCandleStick(oneDay_candleStick, calculateChange, result);
-                    }
-                });
-            },
             error: function(xhr, status){
                 console.log("Error: "+ xhr.status);
             }
@@ -267,5 +250,20 @@ $(document).ready(function(){
     $('#mobile_icon').on('click', function(){
 
         $('.mobile_list').slideToggle();
+    });
+    //SEARCH FOR COIN EVENT LISTENER
+    $('#searchbutton').click(function(){
+        let searchword = document.querySelector('#searchbox').value;
+        const result = SearchCoinList(searchword);
+        if(result===undefined)
+        {
+            console.log("No results found");
+        }
+        else{
+            coinQuery = result['symbol'];
+            coinQuery = coinQuery.toUpperCase();
+            let oneDay_candleStick =`https://api.crypto.com/v2/public/get-candlestick?instrument_name=${coinQuery}_USDT`;
+            getCandleStick(oneDay_candleStick, calculateChange, result);
+        }
     });
 });//End of Domloaded event listener
