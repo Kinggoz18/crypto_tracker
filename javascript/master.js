@@ -266,4 +266,4 @@ $(document).ready(function(){
             getCandleStick(oneDay_candleStick, calculateChange, result);
         }
     });
-});//End of Domloaded event listener
+});//End of Domloaded event listener//
