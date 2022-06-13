@@ -85,25 +85,26 @@ function SearchCoinList(coin)
 //Function to get all coins and store them in a global array - USES API from coinmarketcap
 async function getAllCoins(endpoint)
 {
-    $.ajax(
-        {
-            url: endpoint,
-            headers: {'X-CMC_PRO_API_KEY': '5bc8691d-377f-4a2c-833a-e40a00088cea'},
-            success: function (results){
-                results['data'].forEach(element => {
-                    let name = element['name'];
-                    let symbol = element['symbol'];
-                    let current = {                 //Object to store coin details then push it to the coin list array
-                        "name": `${name.toLowerCase()}`,
-                        "symbol": `${symbol.toLowerCase()}`
-                    }
-                    coinList.push(current);
-                });
-            },
-            error: function(xhr, status){
-                console.log("Error: "+ xhr.status);
+    fetch('./getAllCoins.php?url='+endpoint).then((resp)=>{
+        if(!resp.ok){
+            console.log(resp.statusText);
+        }
+        else{
+            return resp.json();
+        }
+    }).then((resp)=>{
+        resp['data'].forEach(element => {
+            let name = element['name'];
+            let symbol = element['symbol'];
+            let current = {                 //Object to store coin details then push it to the coin list array
+                "name": `${name.toLowerCase()}`,
+                "symbol": `${symbol.toLowerCase()}`
             }
-        })
+            coinList.push(current);
+        });
+    }).catch((error)=>{
+        console.error(error);
+    });
 }
 export function calculateChange(open, current){
     let percent= (((current-open)/open)*100).toFixed(2);
